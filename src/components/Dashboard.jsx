@@ -153,10 +153,7 @@ const Dashboard = ({ user }) => {
     setLoadingNews(true);
     setIsRefreshing(true);
     try {
-      // TEMPORARILY DISABLED LIVE NEWS API TO SAVE CREDITS
-      // To re-enable live news:
-      // 1. Remove this mock data section
-      // 2. Uncomment the API call section below
+      /* TEMPORARILY DISABLED LIVE NEWS API TO SAVE CREDITS
       const mockNews = symbols.reduce((acc, symbol) => {
         acc[symbol] = [{
           title: 'News API temporarily disabled',
@@ -170,8 +167,8 @@ const Dashboard = ({ user }) => {
       }, {});
 
       setNewsData(mockNews);
-
-      /* UNCOMMENT THIS SECTION TO RE-ENABLE LIVE NEWS
+      */ 
+      // Start Live Production
       const newsPromises = symbols.map(async (symbol) => {
         const url = `https://api.thenewsapi.com/v1/news/all?api_token=${NEWS_API_KEY}&search=${symbol}&language=en&limit=3&sort=published_at`;
         console.log(`Fetching news for ${symbol} from:`, url);
@@ -203,7 +200,7 @@ const Dashboard = ({ user }) => {
       const combinedNews = newsResults.reduce((acc, curr) => ({ ...acc, ...curr }), {});
       
       setNewsData(combinedNews);
-      */
+      // End Live Production
     } catch (err) {
       console.error('Error fetching news:', err);
       setError('Failed to fetch news data');
