@@ -48,7 +48,7 @@ function App() {
     return (
       <div className="app-container">
         <div className="auth-section">
-          <img src="/bullblink-logo.png" alt="BullBlink Logo" className="logo" />
+          <img src="/BullBlink Logo2.png" alt="BullBlink Logo" className="logo" />
           {showRegister ? (
             <Register onLoginClick={handleLoginClick} onSuccess={handleLoginClick} />
           ) : showForgotPassword ? (
