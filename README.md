@@ -1,4 +1,4 @@
-# Stock Dashboard Application
+# BullBlink - Stock Dashboard Application
 
 A modern, real-time stock tracking dashboard built with React, Vite, and Supabase. This application allows users to monitor their stock portfolio, view real-time stock data, and stay updated with the latest stock-related news.
 
