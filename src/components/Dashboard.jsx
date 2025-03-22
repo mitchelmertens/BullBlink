@@ -547,7 +547,7 @@ const Dashboard = ({ user }) => {
     <div className="dashboard">
       <div className="dashboard-header">
         <div className="dashboard-title">
-          <h2>{userMetadata?.full_name?.split(' ')[0] || 'Your'}'s Stock Dashboard</h2>
+          <h2>{userMetadata?.full_name ? `${userMetadata.full_name.split(' ')[0]}'s Stock Dashboard` : 'Your Stock Dashboard'}</h2>
         </div>
         <nav className="dashboard-nav">
           <button 
