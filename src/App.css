@@ -58,7 +58,7 @@ body {
 }
 
 .auth-section {
-  width: min(90%, 500px);  /* More responsive width */
+  width: min(90%, 500px);
   margin: 2vh auto;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px);
@@ -94,8 +94,8 @@ body {
 
 .auth-header {
   text-align: left;
-  margin-bottom: 2rem;
-  color: white;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+  width: 100%;
 }
 
 .auth-header h2 {
@@ -110,12 +110,12 @@ body {
   color: #9CA3AF;
   font-size: clamp(0.9rem, 2vw, 1.2rem);
   letter-spacing: -0.01em;
-  margin-bottom: clamp(1rem, 3vw, 2rem);
 }
 
 .form-group {
   margin-bottom: clamp(0.8rem, 2vw, 1.5rem);
   width: 100%;
+  position: relative;
 }
 
 .form-group label {
@@ -133,31 +133,69 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: clamp(4px, 1vw, 8px);
   font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  transition: all 0.2s ease;
   background-color: rgba(54, 54, 54, 0.5);
   color: white;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
 }
 
-.form-group input:focus {
-  outline: none;
-  border-color: rgba(220, 38, 38, 0.5);
-  background-color: rgba(54, 54, 54, 0.7);
-  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+button[type="submit"] {
+  width: 100%;
+  padding: clamp(0.8rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
 }
 
-.form-group input::placeholder {
-  color: #9CA3AF;
+.social-login {
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+  width: 100%;
 }
 
-.error {
-  color: #dc2626;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  background-color: rgba(220, 38, 38, 0.1);
-  border-radius: 6px;
-  text-align: left;
+.social-buttons {
+  display: flex;
+  gap: clamp(0.5rem, 1vw, 1rem);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  padding: clamp(0.5rem, 1.2vw, 0.8rem);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  min-width: clamp(120px, 30vw, 160px);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 480px) {
+  .auth-section {
+    width: 95%;
+    margin: 1vh auto;
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .auth-container {
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .social-buttons {
+    flex-direction: column;
+  }
+
+  .social-button {
+    width: 100%;
+  }
+}
+
+@media (max-height: 700px) {
+  .auth-section {
+    margin: 1vh auto;
+    padding: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .auth-header {
+    margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
+  }
+
+  .form-group {
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem);
+  }
 }
 
 button {
