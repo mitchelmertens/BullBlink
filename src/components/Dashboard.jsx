@@ -523,7 +523,7 @@ const Dashboard = ({ user }) => {
           datasets: monthlyData.datasets
         }}
         options={monthlyData.options || chartConfig.options}
-        height={300}
+        height={240} // Increased from 200
       />
     );
   };
