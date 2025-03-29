@@ -10,11 +10,8 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #2C2C2C;
-  overflow: hidden;
+  overflow: auto; /* Changed from hidden to auto */
   min-height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 
 #root {
@@ -27,10 +24,7 @@ html, body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
+  overflow: auto; /* Changed from hidden to auto */
 }
 
 body {
@@ -49,9 +43,9 @@ body {
   align-items: center;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  overflow: hidden;
+  overflow: auto; /* Changed from hidden to auto */
   padding: 1rem;
-  position: fixed;
+  position: absolute; /* Changed from fixed to absolute */
   top: 0;
   left: 0;
   right: 0;
@@ -70,6 +64,7 @@ body {
 .auth-section {
   max-height: 90vh; /* Reduced from 95vh to ensure no scrolling */
   margin: auto;
+  padding-bottom: 2rem; /* Add padding to ensure content doesn't touch bottom */
 }
 
 .image-section {
@@ -1068,6 +1063,7 @@ button:disabled {
     font-size: 0.9rem;
   }
 }
+
 
 
 
