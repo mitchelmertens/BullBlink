@@ -2,6 +2,13 @@
 
 A modern, real-time stock tracking dashboard built with React, Vite, and Supabase. This application allows users to monitor their stock portfolio, view real-time stock data, and stay updated with the latest stock-related news.
 
+This project meets all minimum requirements:  
+
+- ✅ **Web-Based Interface:** The application provides an interactive, browser-accessible dashboard served via Vite’s development server, ensuring seamless user interaction and data presentation.  
+- ✅ **Back-End Database:** Supabase, a PostgreSQL-based backend, is used for storing persistent data, including user accounts, stock holdings, and portfolio information.  
+- ✅ **External API Integration:** The application leverages Finnhub and Polygon.io APIs for real-time and historical stock data, as well as a News API for relevant financial news.  
+- ✅ **Third-Party Authentication:** Google OAuth 2.0 authentication is integrated via Supabase, allowing secure user login and account management.
+  
 ## Features
 
 ### Authentication
