@@ -4,27 +4,23 @@
   padding: 0;
 }
 
-html, body {
+html, body, #root {
+  min-height: 100vh;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   background-color: #2C2C2C;
-  overflow: auto; /* Changed from hidden to auto */
-  min-height: 100vh;
 }
 
 #root {
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
-  display: flex;
   background-image: url('/bull-background.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow: auto; /* Changed from hidden to auto */
+  display: flex;
+  position: relative;
 }
 
 body {
@@ -34,59 +30,38 @@ body {
 }
 
 .app-container {
-  display: flex;
+  position: fixed; /* Change back to fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   min-height: 100vh;
+  display: flex;
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  overflow: auto; /* Changed from hidden to auto */
+  overflow-y: auto;
   padding: 1rem;
-  position: absolute; /* Changed from fixed to absolute */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  z-index: 1;
 }
 
-/* For mobile Safari specific fix */
+/* Ensure proper iOS support */
 @supports (-webkit-touch-callout: none) {
   html, body, #root, .app-container {
     min-height: -webkit-fill-available;
-    height: -webkit-fill-available;
   }
 }
 
-/* Adjust auth section to fit within viewport */
+/* Update auth section to work with the new structure */
 .auth-section {
-  max-height: 90vh; /* Reduced from 95vh to ensure no scrolling */
-  margin: auto;
-  padding-bottom: 2rem; /* Add padding to ensure content doesn't touch bottom */
-}
-
-.image-section {
-  width: 40%;
-  min-height: 100vh;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  padding: 2rem;
-}
-
-.image-section img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.auth-section {
   width: min(90%, 500px);
   max-height: 98vh;
+  margin: auto;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -1063,6 +1038,7 @@ button:disabled {
     font-size: 0.9rem;
   }
 }
+
 
 
 
