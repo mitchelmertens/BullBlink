@@ -62,22 +62,26 @@ body {
 
 .auth-section {
   width: min(90%, 500px);
-  max-height: 95vh; /* Prevent touching screen edges */
+  max-height: 98vh;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: clamp(12px, 2vw, 24px);
-  padding: min(1.5rem, 3vh);
+  padding: clamp(0.8rem, 2vh, 1.5rem);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
-  width: min(150px, 25vw);
+  width: min(120px, 20vw);
   height: auto;
-  margin-bottom: min(0.5rem, 1vh);
+  margin: clamp(0.3rem, 1vh, 1rem) 0;
   object-fit: contain;
+  display: block;
 }
 
 .welcome-logo {
@@ -90,11 +94,12 @@ body {
 
 .auth-container {
   width: 100%;
-  padding: min(1.5rem, 3vh) min(1rem, 2vw);
+  padding: clamp(0.8rem, 2vh, 1.5rem) clamp(0.5rem, 1vw, 1rem);
   background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 
 .auth-header {
@@ -116,7 +121,7 @@ body {
 }
 
 .form-group {
-  margin-bottom: min(1rem, 2vh);
+  margin-bottom: clamp(0.4rem, 1.5vh, 1rem);
   width: 100%;
   max-width: min(100%, 600px);
   position: relative;
@@ -235,7 +240,7 @@ button:disabled {
 }
 
 .social-login {
-  margin-top: min(1rem, 2vh);
+  margin-top: clamp(0.4rem, 1.5vh, 1rem);
   text-align: center;
   width: 100%;
   max-width: min(100%, 600px);
@@ -966,24 +971,31 @@ button:disabled {
 /* Adjustments for very small screens */
 @media (max-height: 600px) {
   .auth-section {
-    padding: 1rem;
+    padding: clamp(0.5rem, 1.5vh, 0.8rem);
+    max-height: 95vh;
   }
 
   .logo {
-    width: 100px;
-    margin-bottom: 0.5rem;
+    width: min(100px, 15vw);
+    margin: 0.3rem 0;
   }
 
   .auth-header {
-    margin-bottom: 1rem;
-  }
-
-  .form-group {
     margin-bottom: 0.5rem;
   }
 
-  .social-login {
-    margin-top: 0.5rem;
+  .form-group {
+    margin-bottom: 0.3rem;
+  }
+
+  .form-group input {
+    padding: 0.5rem;
+    height: 35px;
+  }
+
+  button[type="submit"] {
+    height: 35px;
+    padding: 0.5rem;
   }
 }
 
@@ -997,16 +1009,34 @@ button:disabled {
 /* Handle landscape orientation on mobile */
 @media (max-height: 500px) and (orientation: landscape) {
   .auth-section {
-    max-height: 98vh;
-    padding: 0.8rem;
+    max-height: 95vh;
+    padding: 0.5rem;
   }
 
   .logo {
-    width: 80px;
-    margin-bottom: 0.3rem;
+    width: min(80px, 12vw);
+    margin: 0.2rem 0;
+  }
+
+  .auth-container {
+    padding: 0.5rem;
   }
 
   .form-group {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .auth-header {
+    margin-bottom: 0.3rem;
+  }
+
+  .auth-header h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .auth-header p {
+    font-size: 0.9rem;
   }
 }
+
