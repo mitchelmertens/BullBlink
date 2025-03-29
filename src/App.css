@@ -62,13 +62,13 @@ body {
 
 .auth-section {
   width: min(90%, 500px);
-  max-height: 98vh;
+  max-height: 95vh; /* Reduced from 98vh */
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: clamp(12px, 2vw, 24px);
-  padding: clamp(0.8rem, 2vh, 1.5rem);
+  padding: clamp(0.5rem, 1.5vh, 1rem); /* Reduced padding */
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   overflow-y: auto;
   display: flex;
@@ -77,9 +77,9 @@ body {
 }
 
 .logo {
-  width: min(120px, 20vw);
+  width: min(100px, 15vw); /* Reduced from 120px */
   height: auto;
-  margin: clamp(0.3rem, 1vh, 1rem) 0;
+  margin: clamp(0.2rem, 0.8vh, 0.8rem) 0; /* Reduced margins */
   object-fit: contain;
   display: block;
 }
@@ -94,7 +94,7 @@ body {
 
 .auth-container {
   width: 100%;
-  padding: clamp(0.8rem, 2vh, 1.5rem) clamp(0.5rem, 1vw, 1rem);
+  padding: clamp(0.5rem, 1.5vh, 1rem); /* Reduced padding */
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -103,25 +103,24 @@ body {
 }
 
 .auth-header {
-  margin-bottom: min(1.5rem, 3vh);
-  color: white;
+  margin-bottom: min(1rem, 2vh); /* Reduced margin */
 }
 
 .auth-header h2 {
-  font-size: min(24px, 5vh);
-  margin-bottom: min(0.5rem, 1vh);
+  font-size: min(20px, 4vh); /* Reduced from 24px */
+  margin-bottom: min(0.3rem, 0.8vh); /* Reduced margin */
   color: white;
   letter-spacing: -0.02em;
 }
 
 .auth-header p {
   color: #9CA3AF;
-  font-size: min(16px, 3vh);
+  font-size: min(14px, 2.5vh); /* Reduced from 16px */
   letter-spacing: -0.01em;
 }
 
 .form-group {
-  margin-bottom: clamp(0.4rem, 1.5vh, 1rem);
+  margin-bottom: clamp(0.3rem, 1vh, 0.8rem); /* Reduced margin */
   width: 100%;
   max-width: min(100%, 600px);
   position: relative;
@@ -138,7 +137,7 @@ body {
 
 .form-group input {
   width: 100%;
-  padding: min(0.8rem, 1.5vh);
+  padding: min(0.6rem, 1.2vh); /* Reduced padding */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: clamp(6px, 1vw, 12px);
   font-size: min(14px, 2.5vh);
@@ -147,6 +146,7 @@ body {
   color: white;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  height: min(35px, 5vh); /* Added fixed height */
 }
 
 .form-group input:focus {
@@ -1007,9 +1007,9 @@ button:disabled {
 }
 
 /* Handle landscape orientation on mobile */
-@media (max-height: 500px) and (orientation: landscape) {
+@media (max-height: 700px) {
   .auth-section {
-    max-height: 95vh;
+    max-height: 90vh;
     padding: 0.5rem;
   }
 
@@ -1019,24 +1019,65 @@ button:disabled {
   }
 
   .auth-container {
-    padding: 0.5rem;
+    padding: 0.4rem;
   }
 
   .form-group {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.25rem;
   }
 
-  .auth-header {
-    margin-bottom: 0.3rem;
+  .form-group input,
+  button[type="submit"] {
+    height: 32px;
+    padding: 0.4rem;
   }
 
-  .auth-header h2 {
-    font-size: 1.2rem;
+  .social-login {
+    margin-top: 0.5rem;
+  }
+
+  .auth-toggle {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .auth-section {
+    max-height: 90vh;
+    padding: 0.4rem;
+  }
+
+  .logo {
+    width: min(70px, 10vw);
+    margin: 0.15rem 0;
+  }
+
+  .auth-container {
+    padding: 0.3rem;
+  }
+
+  .form-group {
     margin-bottom: 0.2rem;
   }
 
+  .auth-header {
+    margin-bottom: 0.2rem;
+  }
+
+  .auth-header h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.15rem;
+  }
+
   .auth-header p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .form-group input,
+  button[type="submit"] {
+    height: 30px;
+    padding: 0.3rem;
   }
 }
+
 
