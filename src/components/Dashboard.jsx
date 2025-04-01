@@ -68,8 +68,19 @@ const handleDeleteAccount = async () => {
   const isConfirmed = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
   
   if (isConfirmed) {
+    const password = prompt('Please enter your password to confirm account deletion:');
+    if (!password) return;
+
     try {
-      // First delete all user's stocks
+      // Verify password by attempting to sign in
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: password,
+      });
+
+      if (signInError) throw new Error('Invalid password');
+
+      // Delete all user's stocks
       const { error: stocksError } = await supabase
         .from('user_stocks')
         .delete()
@@ -77,12 +88,13 @@ const handleDeleteAccount = async () => {
 
       if (stocksError) throw stocksError;
 
-      // Delete user using the correct client method
-      const { error: userError } = await supabase.auth.deleteUser();
+      // Delete user from auth.users table via RPC
+      const { error: deleteError } = await supabase.rpc('delete_current_user');
       
-      if (userError) throw userError;
+      if (deleteError) throw deleteError;
 
-      // Sign out is handled automatically after successful deletion
+      // Sign out after successful deletion
+      await supabase.auth.signOut();
     } catch (err) {
       setError('Failed to delete account: ' + err.message);
     }
