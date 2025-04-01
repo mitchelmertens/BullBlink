@@ -64,31 +64,30 @@ const Dashboard = ({ user }) => {
     }
   };
 
-  const handleDeleteAccount = async () => {
-    const isConfirmed = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
-    
-    if (isConfirmed) {
-      try {
-        // First delete all user's stocks
-        const { error: stocksError } = await supabase
-          .from('user_stocks')
-          .delete()
-          .eq('user_id', user.id);
+const handleDeleteAccount = async () => {
+  const isConfirmed = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
+  
+  if (isConfirmed) {
+    try {
+      // First delete all user's stocks
+      const { error: stocksError } = await supabase
+        .from('user_stocks')
+        .delete()
+        .eq('user_id', user.id);
 
-        if (stocksError) throw stocksError;
+      if (stocksError) throw stocksError;
 
-        // Then delete the user
-        const { error: userError } = await supabase.auth.admin.deleteUser(user.id);
-        
-        if (userError) throw userError;
+      // Delete user using the correct client method
+      const { error: userError } = await supabase.auth.deleteUser();
+      
+      if (userError) throw userError;
 
-        // Sign out after successful deletion
-        await supabase.auth.signOut();
-      } catch (err) {
-        setError('Failed to delete account: ' + err.message);
-      }
+      // Sign out is handled automatically after successful deletion
+    } catch (err) {
+      setError('Failed to delete account: ' + err.message);
     }
-  };
+  }
+};
 
   // Function to fetch monthly data for a single stock using Polygon.io
   const fetchMonthlyData = async (symbol, quantity) => {
