@@ -24,7 +24,7 @@ ChartJS.register(
 
 const FINNHUB_API_KEY = 'cvdnd11r01qm9khm2im0cvdnd11r01qm9khm2img';
 const POLYGON_API_KEY = 'bmWSklm2dvzQM5vzTceto77vuFt58r10';
-const NEWS_API_KEY = 'Twgg7XXxM1m23DOLRScCRkypkhFG8NUohpD6bRqr';
+const NEWS_API_KEY = '1224663c65fb48c68cbb970ba73c89f7';
 
 const dataCache = {};
 
