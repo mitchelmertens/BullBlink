@@ -68,18 +68,7 @@ const handleDeleteAccount = async () => {
   const isConfirmed = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
   
   if (isConfirmed) {
-    const password = prompt('Please enter your password to confirm account deletion:');
-    if (!password) return;
-
     try {
-      // Verify password by attempting to sign in
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: user.email,
-        password: password,
-      });
-
-      if (signInError) throw new Error('Invalid password');
-
       // Delete all user's stocks
       const { error: stocksError } = await supabase
         .from('user_stocks')
